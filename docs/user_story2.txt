@@ -1,0 +1,27 @@
+user story 2
+
+    Fullfiller navigates to our site
+    Clicks Signin
+    Enters their user name and password
+    Once logged on they click the ticket tab/button/etc
+    They look at the tickets that have been submitted
+    Fullfiller sees someone wants/needs an item
+    (i.e. a coat M-L)
+    They have access to one that fits the description
+    They can personally deliver it
+    They click own (as in now they own that ticket/responsibility)
+
+    (Internally a email/text/etc is sent to the requester)
+
+    Fullfiller uses the address/gps provided to deliver the item
+    They also will used the description provided
+    To determine how to identify the person requesting
+
+    If they can provide the item to the intended recepient
+        They do so
+    If not
+        If they see someone else that clearly is in stron need
+            They offer the item to them
+        If not
+            They close the ticket as incomplete
+            They take the item to the warehouse
