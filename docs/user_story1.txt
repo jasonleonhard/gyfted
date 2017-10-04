@@ -1,0 +1,19 @@
+user story 1
+
+User wants/needs an item
+(i.e. A warm coat for the winter M-L)
+User does not need to log in
+They simply navigate to our site
+Input what they would like
+Input what where they are
+Either an address
+Or known building
+(i.e. Smith Memorial Building)
+They click submit and their request is POSTed
+
+They will later be contacted
+If their request has been fullfilled
+If x time goes by they will also be contacted
+Notified that this time we were unable to
+Connect with someone with the item
+And someone to deliver it
