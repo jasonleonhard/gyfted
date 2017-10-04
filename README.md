@@ -1,6 +1,7 @@
 # Gyfted
 (pronounced gift-ed)
 
+![Alt text](/static/images/G.jpg?raw=true "Gyfted")
 
 ### Brief
 We connect people needing items
