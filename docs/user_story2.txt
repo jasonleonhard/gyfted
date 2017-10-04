@@ -7,21 +7,27 @@ user story 2
     They look at the tickets that have been submitted
     Fullfiller sees someone wants/needs an item
     (i.e. a coat M-L)
-    They have access to one that fits the description
-    They can personally deliver it
-    They click own (as in now they own that ticket/responsibility)
+    If they have access to one that fits the description
+        They can personally deliver it
+        They click own (as in now they own that ticket/responsibility)
 
-    (Internally a email/text/etc is sent to the requester)
+        (Internally a email/text/etc is sent to the requester)
 
-    Fullfiller uses the address/gps provided to deliver the item
-    They also will used the description provided
-    To determine how to identify the person requesting
+        Fullfiller uses the address/gps provided to deliver the item
+        They also will used the description provided
+        To determine how to identify the person requesting
 
-    If they can provide the item to the intended recepient
-        They do so
-    If not
-        If they see someone else that clearly is in stron need
-            They offer the item to them
+        If they can provide the item to the intended recepient
+            They do so
         If not
-            They close the ticket as incomplete
-            They take the item to the warehouse
+            If they see someone else that clearly is in stron need
+                They offer the item to them
+            If not
+                They close the ticket as incomplete
+                They take the item to the warehouse
+    If not
+        They attempt to find one at the warehouse or ignore the ticket
+    If certain that the item does not exist
+        They close out the ticket
+
+    (Internally this notifies the requester)
