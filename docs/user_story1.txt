@@ -5,7 +5,7 @@ User wants/needs an item
 User does not need to log in
 They simply navigate to our site
 Input what they would like
-Input what where they are
+Input where they are
 Either an address
 Or known building
 (i.e. Smith Memorial Building)
