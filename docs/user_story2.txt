@@ -7,7 +7,7 @@ user story 2
     They look at the tickets that have been submitted
     Fullfiller sees someone wants/needs an item
     (i.e. a coat M-L)
-    If they have access to one that fits the description
+    If they have access to one that fits the description and are "trusted"
         They can personally deliver it
         They click own (as in now they own that ticket/responsibility)
 
