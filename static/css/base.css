@@ -1,5 +1,28 @@
 body {
-  background: rgba(140, 0, 193, 1);
-  color: #ffffff;
+    padding-top: 70px; // for bootstrap fixed-navbar
 }
 
+.theme_colors{
+    background: rgba(140, 0, 193, 1);
+    color: #ffffff;
+}
+
+.navbar-default .navbar-brand {
+    color: #ffffff;
+    background:  rgba(140, 0, 193, 1);
+    font-weight: bold;
+ }
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    font-weight: bold;
+    background: #ffffff;
+    color: rgba(140, 0, 193, 1);
+ }
+
+.navbar .brand, .navbar .nav > li > a {
+    background: rgba(140, 0, 193, 1);
+    color: #ffffff;
+}
+.navbar .brand, .navbar .nav > li > a:hover {
+    background: #ffffff;
+    color: rgba(140, 0, 193, 1);
+}

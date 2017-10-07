@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet" >
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <h1 class="title">Gyfted</h1>
-      </div>
-    </header>
-    {% block content %}
-    {% endblock %}
-  </body>
-</html>
+{% extends "template.html" %}
+{% block content %}
+<div class="container">
+    <p class="lead">Help those in need and declutter your life.<br>
+    Repurposed goods. Not a landfill or your closet.</p>
+</div>
+{% endblock %}
