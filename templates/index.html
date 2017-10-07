@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet" >
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="title">Gyfted</h1>
+      </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
