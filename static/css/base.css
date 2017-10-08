@@ -2,9 +2,18 @@ body {
     padding-top: 70px; // for bootstrap fixed-navbar
 }
 
+.pink {
+   color: hotpink !important;
+   font-weight: bold;
+}
+
 .theme_colors{
     background: rgba(140, 0, 193, 1);
     color: #ffffff;
+}
+.theme_colors_inverted{
+    background: #ffffff;
+    color: rgba(140, 0, 193, 1);
 }
 
 .navbar-default .navbar-brand {
@@ -25,4 +34,12 @@ body {
 .navbar .brand, .navbar .nav > li > a:hover {
     background: #ffffff;
     color: rgba(140, 0, 193, 1);
+}
+
+.line_height {
+    line-height: 0.4;
+    font-size: 85%;
+}
+.space {
+    padding-bottom: 0.1px;
 }
