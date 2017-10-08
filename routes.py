@@ -17,6 +17,12 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/map")
+def map():
+    """."""
+    return render_template("map.html")
+
+
 # disable browser caching
 @app.after_request
 def add_header(response):
