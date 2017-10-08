@@ -7,19 +7,19 @@ app.secret_key = "development-key"
 
 @app.route("/")
 def index():
-    """."""
+    """Splash screen."""
     return render_template("index.html")
 
 
 @app.route("/about")
 def about():
-    """."""
+    """Mission statement."""
     return render_template("about.html")
 
 
 @app.route("/map")
 def map():
-    """."""
+    """Stubbed out map and list view."""
     return render_template("map.html")
 
 
