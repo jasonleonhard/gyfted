@@ -1,14 +1,11 @@
 """."""
 import os
 from flask import Flask, render_template
-# new stuff
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = "development-key"
-
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-
 db = SQLAlchemy(app)
 
 
