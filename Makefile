@@ -1,4 +1,5 @@
 setup:
+		pipenv --three
 		pipenv install -r requirements.txt
 
 virtual:
