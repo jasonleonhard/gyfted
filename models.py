@@ -10,14 +10,14 @@ class User(db.Model):
 
     __tablename__ = 'users'
     uid = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
+    username = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True)
 
-    def __init__(self, name='', email=''):
-        """Initialize and title case name."""
-        self.name = name.title()
+    def __init__(self, username='', email=''):
+        """Initialize and title case username."""
+        self.username = username.title()
         self.email = email
 
     def __repr__(self):
-        """String represenation of User showing only name."""
-        return '<User %r>' % self.name
+        """String represenation of User showing only username."""
+        return '<User %r>' % self.username
