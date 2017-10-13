@@ -1,12 +1,13 @@
 """."""
 import os
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
+from models import db, User
 
 app = Flask(__name__)
 app.secret_key = "development-key"
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(app)
+db.init_app(app)
 
 
 @app.route("/")
