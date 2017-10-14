@@ -1,0 +1,11 @@
+Tech Stack - Create Flask App
+
+As a User, I want a Python/Flask web application so that I can track tickets
+
+Roles:
+Gyfter
+Requester
+
+Acceptance Criteria:
+Create a Flask App
+Push to repo

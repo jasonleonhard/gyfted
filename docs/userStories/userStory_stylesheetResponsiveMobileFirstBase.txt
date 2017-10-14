@@ -1,0 +1,10 @@
+Stylesheet - Responsive - Mobile First - Base
+
+As a user, I want a responsive website so that I can access a user friendly site on a multitude of devices
+
+Roles:
+Requester
+Gyfter
+
+Acceptance Criteria:
+TBD
