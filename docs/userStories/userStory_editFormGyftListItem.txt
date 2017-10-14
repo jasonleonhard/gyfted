@@ -1,0 +1,16 @@
+Edit Form - "Gyft List" Item
+
+As a Gyfter, I want a button that takes me to a form so that I can view/edit ticket details
+
+Roles:
+Gyfter
+
+Acceptance Criteria:
+Load ticket details into each form field
+Link from Gyft list redirects to an individual ticket
+"To" input text field
+"From" - trusted delivery staff - dropdown menu
+"Item" input text field
+"Location Description" text area
+"Other Details" text area
+"Status - Pending (Default), In Progress, Done" dropdown menu
