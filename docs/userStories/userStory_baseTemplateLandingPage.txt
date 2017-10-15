@@ -1,0 +1,11 @@
+Base Template - Landing Page
+
+As a Requester, I want a landing page without a simple interface so that I can quickly navigate to complete a task
+
+Roles:
+Requester
+
+Acceptance Criteria:
+Two buttons stacked vertically
+Label for Button 1: "Request"
+Label for Button 2: "Gyft"

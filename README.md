@@ -119,3 +119,15 @@ One can carry with them
 All throughout their days
 
 That which they are Gyfted.
+
+### Wireframes
+
+__Wireframe 1__<br>
+<img src="/docs/wireframes/20171004_192940.jpg" width="350" alt="wireframe1"><br>
+__Wireframe 2__<br>
+<img src="/docs/wireframes/discussion_02oct17.jpg" width="350" alt="wireframe2"><br>
+__Wireframe 3__<br>
+<img src="/docs/wireframes/sketch_08oct17 6.13.28 PM.jpg" width="350" alt="wireframe3"><br>
+__Wireframe 4__<br>
+PDF [Click to View](/docs/wireframes/donations_walkthrough.pdf)
+

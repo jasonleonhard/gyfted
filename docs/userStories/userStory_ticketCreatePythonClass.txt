@@ -1,0 +1,18 @@
+Ticket - Create Python Class
+
+As a User, I want a ticket feature so that I can track tickets
+
+Roles:
+Gyfter
+Requester
+
+Acceptance Criteria:
+ID - PK
+Create Date
+To
+From
+Item
+Location Description
+Other Details
+Lat/Long
+Status - Pending (Default), In Progress, Done
