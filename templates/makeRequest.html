@@ -1,90 +1,93 @@
 {% extends "template.html" %}
 {% block content %}
-<div class="container">
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="dropoff">
-                <input type="checkbox"  id="dropoff" value="true"> Anonymous
+
+<h1>Make Request</h1>
+<form class="form-horizontal">
+    <div class="alert alert-info" role="alert">Prefer to remain Anonymous? Check here:
+        <div class="form-check">
+            <label class="dropff form-check-label">
+                <input class="form-check-input" type="checkbox" id="dropoff">
+                Anonymous
             </label>
         </div>
-        <div class="form-group">
-            <label for="name" class="control-label col-sm-2">Name*</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control col-sm-10" id="name" name="name">
-            </div>
+    </div>
+    <div class="form-group">
+        <label for="name" class="control-label col-sm-2">Name*</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control col-sm-10" id="name" name="name">
         </div>
-        <div class="form-group">
-            <label for="contactemail" class="control-label col-sm-2">Email address</label>
-            <div class="col-sm-10">
-                <input type="email" class="form-control" id="contactemail" name="contactemail">
-            </div> 
-        </div>
-        <div class="form-group">
-            <label for="phone" class="control-label col-sm-2">Phone</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="phone" name="phone">
-            </div> 
-        </div>
-        <div class="form-group">
-            <label for="item" class="control-label col-sm-2">Item to donate*</label>
-            <div class="col-sm-10">    
-                <input type="text" class="form-control" id="item" name="item">
-            </div> 
-        </div>
-        <div class="form-group">
-            
-            <label for="location" class="control-label col-sm-2">Address of pickup</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" id="location" name="location">
-            </div>
-            <div class="col-sm-2">
-               <button class="btn btn-default form-control" type="button">Find me</button>
-            </div>   
-        </div>
+    </div>
+    <div class="form-group">
+        <label for="contactemail" class="control-label col-sm-2">Email address</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" id="contactemail" name="contactemail">
+        </div> 
+    </div>
+    <div class="form-group">
+        <label for="phone" class="control-label col-sm-2">Phone</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div> 
+    </div>
+    <div class="form-group">
+        <label for="item" class="control-label col-sm-2">Item to donate*</label>
+        <div class="col-sm-10">    
+            <input type="text" class="form-control" id="item" name="item">
+        </div> 
+    </div>
+    <div class="form-group">
         
-        <div class="form-group">
-            <label for="frequency" class="control-label col-sm-2">Frequency</label>
-            <div class="col-sm-10">
-                <select class="form-control" id="frequency" name="frequency">
-                    <option value="1">Once</option>
-                    <option value="">Weekly</option>
-                    <option>Monthly</option>
-                    
-                </select>
-            </div> 
+        <label for="location" class="control-label col-sm-2">Address of pickup</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="location" name="location">
         </div>
-
-        <div class="form-group">
-            <label for="expiration" class="control-label col-sm-2">Expiration</label>
-            <div class="col-sm-10">    
-                <select class="form-control" id="expiration" name="expiration">
-                    <option value="1">None</option>
-                    <option value="">Weekly</option>  <!--TODO date picker -->
-                </select>
-            </div>    
-        </div>
+        <div class="col-sm-2">
+           <button class="btn btn-default form-control" type="button">Find me</button>
+        </div>   
+    </div>
+    
+    <div class="form-group">
+        <label for="frequency" class="control-label col-sm-2">Frequency</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="frequency" name="frequency">
+                <option value="1">Once</option>
+                <option value="">Weekly</option>
+                <option>Monthly</option>
                 
-        <div class="form-group">
-            <label for="delivery" class="control-label col-sm-2">Delivery</label>
-            <div class="col-sm-10">    
-                <select class="form-control" id="expiration" name="expiration">
-                    <option value="1">Needs picked up</option>
-                    <option value="2">Can drop off</option> 
-                </select>
-            </div>    
-        </div>
-        <div class="form-group">
-            <label for="comments" class="control-label col-sm-2">Comments</label>
-            <div class="col-sm-10">    
-                <textarea class="form-control"> </textarea>
-            </div>    
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12">    
-                <input type="submit" class="btn form-control" value="Submit Donation">
-            </div>    
-        </div>
-    </form>
-</div>    
+            </select>
+        </div> 
+    </div>
+
+    <div class="form-group">
+        <label for="expiration" class="control-label col-sm-2">Expiration</label>
+        <div class="col-sm-10">    
+            <select class="form-control" id="expiration" name="expiration">
+                <option value="1">None</option>
+                <option value="">Weekly</option>  <!--TODO date picker -->
+            </select>
+        </div>    
+    </div>
+            
+    <div class="form-group">
+        <label for="delivery" class="control-label col-sm-2">Delivery</label>
+        <div class="col-sm-10">    
+            <select class="form-control" id="expiration" name="expiration">
+                <option value="1">Needs picked up</option>
+                <option value="2">Can drop off</option> 
+            </select>
+        </div>    
+    </div>
+    <div class="form-group">
+        <label for="comments" class="control-label col-sm-2">Comments</label>
+        <div class="col-sm-10">    
+            <textarea class="form-control"> </textarea>
+        </div>    
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">    
+            <input type="submit" class="btn form-control" value="Submit Donation">
+        </div>    
+    </div>
+</form>
 
 {% endblock %}
