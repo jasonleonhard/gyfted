@@ -41,6 +41,12 @@ def requests():
     return render_template("requests.html")
 
 
+@app.route("/singleTicketViewDonation")
+def singleTicketViewDonation():
+    """Single ticket view of a Donation"""
+    return render_template("singleTicketViewDonation.html")
+
+
 # disable browser caching
 @app.after_request
 def add_header(response):
