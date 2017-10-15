@@ -42,4 +42,14 @@
     {% block content %} {% endblock %}
     </div>    
 </body>
+
+<script type="text/javascript">
+
+// change class Anonymous checkbox
+$("#dropoff").change(function() {
+    $("div.alert-info").toggleClass("alert-danger");
+});
+
+</script>
+
 </html>
