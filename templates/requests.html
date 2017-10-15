@@ -1,86 +1,88 @@
-{% extends "template.html" %} {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form class="form-horizontal" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </div>
+{% extends "template.html" %} 
+
+{% block content %}
+
+<h1>Requests</h1>
+<div class="row">
+    <div class="col-xs-12">
+        <form class="form-horizontal" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
                 </div>
-            </form>
-            <br>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <!-- <div id="list"></div> -->
+        <div class="stub">
+            <p>
+                U.S. Bancorp Tower 0 min away
+            </p>
+            <p>
+                Roseland Theater 0 min away
+            </p>
+            <p>
+                Broadway Hotel (Portland, Oregon) 0 min away
+            </p>
+            <p>
+                Star Theater (Portland, Oregon) 0 min away
+            </p>
+            <p>
+                Untitled (Killmaster) 1 min away
+            </p>
+            <p>
+                Corbett Brothers Auto Storage Garage 1 min away
+            </p>
+            <p>
+                Portland City Grill 1 min away
+            </p>
+            <p>
+                Ground Kontrol 1 min away
+            </p>
+            <p>
+                Pensole 1 min away
+            </p>
+            <p>
+                Embers Avenue 1 min away
+            </p>
+            <p>
+                Southwest 6th & Pine Street and Southwest 5th & Oak Street 1 min away
+            </p>
+            <p>
+                Backspace (Portland, Oregon) 1 min away
+            </p>
+            <p>
+                Northwest 6th & Davis Street and Northwest 5th & Couch Street 1 min away
+            </p>
+            <p>
+                24 Hour Church of Elvis 1 min away
+            </p>
+            <p>
+                Nepenthes (sculpture) 2 min away
+            </p>
+            <p>
+                Chinatown Gateway 2 min away
+            </p>
+            <p>
+                Lombard Automobile Buildings 2 min away
+            </p>
+            <p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-4">
-            <!-- <div id="list"></div> -->
-            <div class="stub">
-                <h1>Requests</h1>
-                <p>
-                    U.S. Bancorp Tower 0 min away
-                </p>
-                <p>
-                    Roseland Theater 0 min away
-                </p>
-                <p>
-                    Broadway Hotel (Portland, Oregon) 0 min away
-                </p>
-                <p>
-                    Star Theater (Portland, Oregon) 0 min away
-                </p>
-                <p>
-                    Untitled (Killmaster) 1 min away
-                </p>
-                <p>
-                    Corbett Brothers Auto Storage Garage 1 min away
-                </p>
-                <p>
-                    Portland City Grill 1 min away
-                </p>
-                <p>
-                    Ground Kontrol 1 min away
-                </p>
-                <p>
-                    Pensole 1 min away
-                </p>
-                <p>
-                    Embers Avenue 1 min away
-                </p>
-                <p>
-                    Southwest 6th & Pine Street and Southwest 5th & Oak Street 1 min away
-                </p>
-                <p>
-                    Backspace (Portland, Oregon) 1 min away
-                </p>
-                <p>
-                    Northwest 6th & Davis Street and Northwest 5th & Couch Street 1 min away
-                </p>
-                <p>
-                    24 Hour Church of Elvis 1 min away
-                </p>
-                <p>
-                    Nepenthes (sculpture) 2 min away
-                </p>
-                <p>
-                    Chinatown Gateway 2 min away
-                </p>
-                <p>
-                    Lombard Automobile Buildings 2 min away
-                </p>
-                <p>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="row">
-                <!-- <div id="map"></div> -->
-                <img src="https://raw.githubusercontent.com/jasonleonhard/gyfted/master/static/images/map_stub.png" class="img-responsive stub" />
-                <div class="space"></div>
-            </div>
+    <div class="col-sm-8">
+        <div class="row">
+            <!-- <div id="map"></div> -->
+            <img src="https://raw.githubusercontent.com/jasonleonhard/gyfted/master/static/images/map_stub.png" class="img-responsive stub" />
+            <div class="space"></div>
         </div>
     </div>
 </div>
+
 {% endblock %}
