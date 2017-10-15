@@ -22,10 +22,10 @@ def map():
     """Stubbed out map and list view."""
     return render_template("map.html")
 
-@app.route("/donate")
+@app.route("/addticket")
 def donate():
     """Mission statement."""
-    return render_template("donate.html")
+    return render_template("addticket.html")
 
 
 
