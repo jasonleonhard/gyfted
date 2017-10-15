@@ -22,10 +22,28 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/map")
+@app.route("/makeDonation")
 def map():
-    """Stubbed out map and list view."""
-    return render_template("map.html")
+    """Create a Donation ticket."""
+    return render_template("makeDonation.html")
+
+
+@app.route("/makeRequest")
+def map():
+    """Create a Request ticket."""
+    return render_template("makeRequest.html")
+
+
+@app.route("/donations")
+def map():
+    """Stubbed out map and Donations list view."""
+    return render_template("donations.html")
+
+
+@app.route("/requests")
+def map():
+    """Stubbed out map and Requests list view."""
+    return render_template("requests.html")
 
 
 # disable browser caching
