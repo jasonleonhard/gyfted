@@ -4,6 +4,7 @@ setup:
 
 virtual:
 		pipenv shell
+		ENV | grep -i DATABASE_URL
 
 run:
 		pipenv run python3 app.py
