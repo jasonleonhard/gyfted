@@ -1,0 +1,9 @@
+Add Form - "Request" Button - Controller
+
+As a Requester, I want a button that takes me to a form so that I can add a ticket
+
+Roles:
+Requester
+
+Acceptance Criteria:
+Clicking the "Request" button on the landing page redirects to a "Request" Form

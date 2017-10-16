@@ -1,0 +1,13 @@
+Form List - "Gyft" Button
+
+As a Gyfter, I want a button that takes me to a Gyft list form so that I can view all tickets
+
+
+Roles:
+Gyfter
+
+Acceptance Criteria:
+Clicking the "Gyft" button on the landing page redirects to a "Gyft" List
+Display all list items 
+Display ticket details for each record under headers (id, item, location, status) 
+Link each list item by id

@@ -1,0 +1,15 @@
+Add Form - "Request" Button
+
+As a Requester, I want a button that takes me to a form so that I can add a ticket
+
+Roles:
+Requester
+
+Acceptance Criteria:
+"To" input text field
+"From" - trusted delivery staff - dropdown menu
+"Item" input text field
+"Location Description" text area
+"Other Details" text area
+"Status - Pending (Default), In Progress, Done" -
+ dropdown menu

@@ -1,7 +1,10 @@
 body {
     padding-top: 70px; // for bootstrap fixed-navbar
 }
-
+label{
+    display: inline-block;
+    
+}
 .pink {
    color: hotpink !important;
    font-weight: bold;
@@ -42,4 +45,7 @@ body {
 }
 .space {
     padding-bottom: 0.1px;
+}
+#formTitle{
+    text-align: center;
 }

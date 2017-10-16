@@ -22,6 +22,12 @@ def map():
     """Stubbed out map and list view."""
     return render_template("map.html")
 
+@app.route("/addticket")
+def donate():
+    """Mission statement."""
+    return render_template("addticket.html")
+
+
 
 # disable browser caching
 @app.after_request
