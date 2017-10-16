@@ -3,7 +3,7 @@ body {
 }
 label{
     display: inline-block;
-    
+
 }
 .pink {
    color: hotpink !important;
@@ -43,9 +43,11 @@ label{
     line-height: 0.4;
     font-size: 85%;
 }
+
 .space {
     padding-bottom: 0.1px;
 }
+
 #formTitle{
     text-align: center;
 }
