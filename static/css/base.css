@@ -39,6 +39,15 @@ label{
     color: rgba(140, 0, 193, 1);
 }
 
+td {
+    background: rgba(140, 0, 193, 1);
+    color: #ffffff;
+}
+
+td:hover {
+    font-weight: bold;
+}
+
 .line_height {
     line-height: 0.4;
     font-size: 85%;
