@@ -101,8 +101,6 @@ def delete_ticket():
     if not hide_ticket:
         return redirect("/?error=Attempt to watch a ticket unknown to db")
 
-    # if we didn't redirect by now, then all is well
-    # without this section it only temp hides in view, not db
     hide_ticket.hidden = True
     db.session.commit()
     return redirect('/show_all')  # currently only
