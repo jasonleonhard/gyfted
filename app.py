@@ -3,6 +3,7 @@ from flask import render_template, request, session, redirect
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
+
 from models import app, db, User, Ticket
 
 
@@ -107,7 +108,6 @@ def delete_ticket():
     hide_ticket.hidden = True
     db.session.commit()
     return redirect('/show_all')  # currently only
-
 
 # disable browser caching
 @app.after_request
