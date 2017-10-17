@@ -41,12 +41,15 @@ t6 = Ticket(item='a blue L mens tucker hat', deliverer='',
             dropoff_address='Providence Park', dropoff_time='8pm',
             dropoff_date='1/11/18')
 
+# user1 = User(username='admin', password='admin')
+
 db.session.add(t1)
 db.session.add(t2)
 db.session.add(t3)
 db.session.add(t4)
 db.session.add(t5)
 db.session.add(t6)
+db.session.add(user1)
 db.session.commit()
 tickets = Ticket.query.all()
 donated_by_jason = Ticket.query.filter_by(gyfter='Jason').first()

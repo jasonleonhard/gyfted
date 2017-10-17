@@ -1,6 +1,9 @@
 """."""
 from flask import render_template, request, session, redirect
-from models import app, db, Ticket
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
+from models import app, db, User, Ticket
 
 
 @app.route("/")
@@ -120,6 +123,9 @@ def add_header(response):
 
 
 if __name__ == "__main__":
+    admin = Admin(app, name='Gyfted', template_mode='bootstrap3')
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Ticket, db.session))
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True)
     app.debug = True
