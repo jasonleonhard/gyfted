@@ -43,9 +43,9 @@ class Ticket(db.Model):
     hidden = db.Column(db.Boolean)
     status = db.Column(db.String(100))
 
-    def __init__(self, item, deliverer, gyfter, pickup_address, pickup_time,
-                 pickup_date, requester, dropoff_address, dropoff_time,
-                 dropoff_date):
+    def __init__(self, item = "", deliverer = "", gyfter = "", pickup_address = "", pickup_time ="",
+                 pickup_date = "", requester = "", dropoff_address = "", dropoff_time = "",
+                 dropoff_date = ""):
         """Initialize each field. Sections include: by, from, to, other"""
         self.item = item
         self.deliverer = deliverer
@@ -74,7 +74,7 @@ class User(db.Model):
     username = db.Column(db.String(25), unique=True)
     password = db.Column(db.String(120))
 
-    def __init__(self, username, password):
+    def __init__(self, username = "", password = ""):
         self.username = username
         self.password = password
 
