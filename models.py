@@ -6,7 +6,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "development-key"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/gyfted_dev'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
@@ -43,9 +43,9 @@ class Ticket(db.Model):
     hidden = db.Column(db.Boolean)
     status = db.Column(db.String(100))
 
-    def __init__(self, item, deliverer, gyfter, pickup_address, pickup_time,
-                 pickup_date, requester, dropoff_address, dropoff_time,
-                 dropoff_date):
+    def __init__(self, item = "", deliverer = "", gyfter = "", pickup_address = "", pickup_time ="",
+                 pickup_date = "", requester = "", dropoff_address = "", dropoff_time = "",
+                 dropoff_date = ""):
         """Initialize each field. Sections include: by, from, to, other"""
         self.item = item
         self.deliverer = deliverer
@@ -67,3 +67,16 @@ class Ticket(db.Model):
     def __repr__(self):
         """String represenation of User showing only username and id."""
         return '<Ticket %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s> ' % (self.tid, self.item, self.deliverer, self.gyfter, self.pickup_address, self.pickup_time, self.pickup_date, self.requester, self.dropoff_address, self.dropoff_time, self.dropoff_date, self.created, self.hidden, self.status)
+
+class User(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(25), unique=True)
+    password = db.Column(db.String(120))
+    email = db.Column(db.String(120))
+
+    def __init__(self, username = "", password = "", email = ""):
+        self.username = username
+        self.password = password
+        self.email = email
+
