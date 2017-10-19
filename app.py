@@ -103,12 +103,15 @@ def status():
     print("id: ", ticket_id, "status: ", ticket_status)
     ticket = Ticket.query.get(ticket_id)
 
+    # view ticket
     if ticket_id and not(ticket_status):
         return render_template("showticket.html", title="View Ticket", ticket=ticket)
 
+    # display add delivery instructions form
     if ticket_status == "new":
         return render_template("status_new.html", title="Edit Ticket", ticket=ticket)
 
+    # change status from new to ready
     if ticket_status == "ready":
         # retrieve form data
         deliverer = request.form['deliverer']
@@ -126,7 +129,14 @@ def status():
         ticket.status = "ready"
         db.session.commit()
 
-        return redirect("show_all?tid=" + ticket_id)
+        return redirect("view?tid=" + ticket_id)
+
+    # change status from ready to in-progress
+
+
+    # change status from in-progress to closed
+
+
 
 
 @app.route('/delete_ticket', methods=['GET', 'POST'])
