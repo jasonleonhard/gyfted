@@ -62,7 +62,7 @@ class Ticket(db.Model):
 
         self.created = datetime.utcnow()
         self.hidden = False
-        self.status = 'ready'
+        self.status = 'new'
 
     def __repr__(self):
         """String represenation of User showing only username and id."""

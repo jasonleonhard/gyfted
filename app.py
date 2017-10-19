@@ -100,6 +100,39 @@ def show_all():
     return render_template('show_all.html', all_tickets=all_tickets, title="Tickets")
 
 
+@app.route("/status", methods=['GET', 'POST'])
+def status():
+    """Stubbed out show and list users view."""
+
+    ticket_id = request.args.get('tid')
+    ticket_status = request.args.get('status')
+    print("id: ", ticket_id, "status: ", ticket_status)
+    ticket = Ticket.query.get(ticket_id)
+
+    if ticket_status == "new":
+        return render_template("status_new.html", title="Edit Ticket", ticket=ticket)
+
+    if ticket_status == "ready":
+
+        # retrieve form data
+        deliverer = request.form['deliverer']
+        requester = request.form['requester']
+        dropoff_address = request.form['dropoff_address']
+        dropoff_time = request.form['dropoff_time']
+        dropoff_date = request.form['dropoff_date']
+
+        # update ticket in db
+        ticket.deliverer = deliverer
+        ticket.requester = requester
+        ticket.dropoff_address = dropoff_address
+        ticket.dropoff_time = dropoff_time
+        ticket.dropoff_date = dropoff_date
+        ticket.status = "ready"
+        db.session.commit()
+
+        return redirect("show_all?tid=" + ticket_id)
+
+
 @app.route('/delete_ticket', methods=['GET', 'POST'])
 def delete_ticket():
     """Hide ticket instead of removing from db.
