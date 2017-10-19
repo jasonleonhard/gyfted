@@ -7,22 +7,16 @@
         <!-- <br> -->
     <div class="row">
         <div class="col-md-6">
-            <span class="label label-default">ticket: {{ticket.status}}</span>
+            <h1><span class="label label-success">status: {{ ticket.status }}</span></h1>
+            <h2>Gyfter</h2>
             <div>item: {{ticket.item}}</div>
-            <!-- <div>deliverer: {{ticket.deliverer}}</div> -->
-
             <div>gyfter: {{ticket.gyfter}}</div>
             <div>pickup_address: {{ticket.pickup_address}}</div>
             <div>pickup_time: {{ticket.pickup_time}}</div>
             <div>pickup_date: {{ticket.pickup_date}}</div>
 
-            <!-- <div>requester: {{ticket.requester}}</div> -->
-            <!-- <div>dropoff_address: {{ticket.dropoff_address}}</div> -->
-            <!-- <div>dropoff_time: {{ticket.dropoff_time}}</div> -->
-            <!-- <div>dropoff_date: {{ticket.dropoff_date}}</div> -->
-        </div>
-        <form action="/status?tid={{ ticket.tid }}&status=ready" method="POST">
-            <div class="col-md-6">
+            <h2>Delivery Instructions</h2>
+            <form action="/status?tid={{ ticket.tid }}&status=ready" method="POST">
                 <span class="label label-default">deliverer</span>
                 <input class="form-control" type="text" name="deliverer" value={{deliverer}}>
 
@@ -42,8 +36,8 @@
                 <a href="/show_all?tid={{ ticket.tid }}">
                     <div class="btn btn-danger btn-xs">cancel</div>
                 </a>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
     {% endif %}
 
