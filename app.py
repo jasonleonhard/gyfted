@@ -104,14 +104,12 @@ def status():
     ticket = Ticket.query.get(ticket_id)
 
     if ticket_id and not(ticket_status):
-        ticket = Ticket.query.get(ticket_id)
         return render_template("showticket.html", title="View Ticket", ticket=ticket)
 
     if ticket_status == "new":
         return render_template("status_new.html", title="Edit Ticket", ticket=ticket)
 
     if ticket_status == "ready":
-
         # retrieve form data
         deliverer = request.form['deliverer']
         requester = request.form['requester']
