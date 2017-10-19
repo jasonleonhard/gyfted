@@ -83,7 +83,7 @@
                       <div class="float-right">
                           {{ticket.tid}}
                       </div>
-                      <form action="/show_ticket?tid={{ticket.tid}}" method="POST" class='nmb'>
+                      <form action="/show_all?tid={{ticket.tid}}" method="POST" class='nmb'>
                         <input type="hidden" name="tid" value="{{ticket.tid}}">
                         <input type="submit" value="show" class='btn btn-primary btn-xs'>
                       </form>

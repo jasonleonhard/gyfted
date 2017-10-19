@@ -6,19 +6,19 @@ from models import app, db, Ticket
 @app.route("/")
 def index():
     """Splash screen."""
-    return render_template("index.html")
+    return render_template("index.html", title="Home")
 
 
 @app.route("/about")
 def about():
     """Mission statement."""
-    return render_template("about.html")
+    return render_template("about.html", title="About")
 
 
 @app.route("/map")
 def map():
     """Stubbed out map and list view."""
-    return render_template("map.html")
+    return render_template("map.html", title="Offerings")
 
 
 @app.route('/hello/')
@@ -40,9 +40,9 @@ def newticket(item='', deliverer='',
               gyfter='', pickup_address='', pickup_time='', pickup_date='',
               requester='', dropoff_address='', dropoff_time='',
               dropoff_date=''):
-    """Stubbed out map and list view."""
+    """render ticket form."""
     if request.method == 'GET':
-        return render_template('newticket.html')  # , title=title)
+        return render_template('newticket.html', title="New Ticket")  # , title=title)
     if request.method == 'POST':
         # Clear sessions then store form fields in session object by name
         session.clear()
@@ -79,14 +79,25 @@ def newticket(item='', deliverer='',
 
         db.session.add(ticket)
         db.session.commit()
-        return render_template('show.html', ticket=ticket)
+
+        ticket_id = str(ticket.tid)
+
+        # return render_template('show.html', ticket=ticket)
+        return redirect("show_all?tid=" + ticket_id)
 
 
-@app.route("/show_all", methods=['GET'])
+@app.route("/show_all", methods=['GET', 'POST'])
 def show_all():
     """Stubbed out show and list users view."""
+
+    ticket_id = request.args.get('tid')
+
+    if ticket_id:
+        ticket = Ticket.query.get(ticket_id)
+        return render_template("showTicket.html", title="View Ticket", ticket=ticket)
+
     all_tickets = Ticket.query.all()
-    return render_template('show_all.html', all_tickets=all_tickets)
+    return render_template('show_all.html', all_tickets=all_tickets, title="Tickets")
 
 
 @app.route('/delete_ticket', methods=['GET', 'POST'])
