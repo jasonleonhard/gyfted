@@ -83,24 +83,18 @@ def newticket(item='', deliverer='',
         ticket_id = str(ticket.tid)
 
         # return render_template('show.html', ticket=ticket)
-        return redirect("show_all?tid=" + ticket_id)
+        return redirect("view?tid=" + ticket_id)
 
 
 @app.route("/show_all", methods=['GET', 'POST'])
 def show_all():
     """Stubbed out show and list users view."""
 
-    ticket_id = request.args.get('tid')
-
-    if ticket_id:
-        ticket = Ticket.query.get(ticket_id)
-        return render_template("showTicket.html", title="View Ticket", ticket=ticket)
-
     all_tickets = Ticket.query.all()
     return render_template('show_all.html', all_tickets=all_tickets, title="Tickets")
 
 
-@app.route("/status", methods=['GET', 'POST'])
+@app.route("/view", methods=['GET', 'POST'])
 def status():
     """Stubbed out show and list users view."""
 
@@ -108,6 +102,10 @@ def status():
     ticket_status = request.args.get('status')
     print("id: ", ticket_id, "status: ", ticket_status)
     ticket = Ticket.query.get(ticket_id)
+
+    if ticket_id and not(ticket_status):
+        ticket = Ticket.query.get(ticket_id)
+        return render_template("showticket.html", title="View Ticket", ticket=ticket)
 
     if ticket_status == "new":
         return render_template("status_new.html", title="Edit Ticket", ticket=ticket)

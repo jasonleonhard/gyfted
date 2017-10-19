@@ -5,14 +5,14 @@
     {% if ticket and ticket.status == "new" %}
         <div class="col-md-6">
             <h1><span class="label label-success">status: {{ ticket.status }}</span></h1>
-            
+
             <h2>Gyfter Details</h2>
             <div>item: {{ticket.item}}</div>
             <div>gyfter: {{ticket.gyfter}}</div>
             <div>pickup_address: {{ticket.pickup_address}}</div>
             <div>pickup_time: {{ticket.pickup_time}}</div>
             <div>pickup_date: {{ticket.pickup_date}}</div>
-            <form action="/status?tid={{ ticket.tid }}&status={{ ticket.status }}" method="POST">
+            <form action="/view?tid={{ ticket.tid }}&status={{ ticket.status }}" method="POST">
                 <input class="btn btn-primary btn-xs fresh" type="submit" value="change status">
             </form>
         </div>
@@ -36,7 +36,7 @@
             <div>dropoff_time: {{ticket.dropoff_time}}</div>
             <div>dropoff_date: {{ticket.dropoff_date}}</div>
 
-            <form action="/status?tid={{ ticket.tid }}&status={{ ticket.status }}" method="POST">
+            <form action="/view?tid={{ ticket.tid }}&status={{ ticket.status }}" method="POST">
                 <input class="btn btn-primary btn-xs fresh" type="submit" value="change status">
             </form>
         </div>

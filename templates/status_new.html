@@ -16,7 +16,7 @@
             <div>pickup_date: {{ticket.pickup_date}}</div>
 
             <h2>Delivery Instructions</h2>
-            <form action="/status?tid={{ ticket.tid }}&status=ready" method="POST">
+            <form action="/view?tid={{ ticket.tid }}&status=ready" method="POST">
                 <span class="label label-default">deliverer</span>
                 <input class="form-control" type="text" name="deliverer" value={{deliverer}}>
 
