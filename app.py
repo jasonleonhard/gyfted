@@ -100,7 +100,8 @@ def status():
 
     ticket_id = request.args.get('tid')
     ticket_status = request.args.get('status')
-    print("id: ", ticket_id, "status: ", ticket_status)
+    ticket_action = request.args.get('action')
+    print("id: ", ticket_id, "status: ", ticket_status, "action: ", ticket_action)
     ticket = Ticket.query.get(ticket_id)
 
     # view ticket
@@ -108,11 +109,12 @@ def status():
         return render_template("showticket.html", title="View Ticket", ticket=ticket)
 
     # display add delivery instructions form
-    if ticket_status == "new":
-        return render_template("status_new.html", title="Edit Ticket", ticket=ticket)
+    if ticket_status == "new" and ticket_action:
+        return render_template("status_ready.html", title="Edit Ticket", ticket=ticket)
 
     # change status from new to ready
-    if ticket_status == "ready":
+    if ticket_status == "ready" and not(ticket_action):
+
         # retrieve form data
         deliverer = request.form['deliverer']
         requester = request.form['requester']
@@ -126,17 +128,25 @@ def status():
         ticket.dropoff_address = dropoff_address
         ticket.dropoff_time = dropoff_time
         ticket.dropoff_date = dropoff_date
-        ticket.status = "ready"
+        ticket.status = ticket_status
         db.session.commit()
-
         return redirect("view?tid=" + ticket_id)
 
-    # change status from ready to in-progress
-
+    # display add delivery instructions form
+    if ticket_status == "ready" and ticket_action:
+        return render_template("status_closed.html", title="Edit Ticket", ticket=ticket)
 
     # change status from in-progress to closed
+    if ticket_status == "closed":
 
+        # # retrieve form data
+        closed_details = request.form['closed_details']
 
+        # # update ticket in db
+        ticket.closed_details = closed_details
+        ticket.status = ticket_status
+        db.session.commit()
+        return redirect("view?tid=" + ticket_id)
 
 
 @app.route('/delete_ticket', methods=['GET', 'POST'])

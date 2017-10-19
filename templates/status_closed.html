@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container">
+
+    {% if ticket %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1><span class="label label-warning">status: {{ ticket.status }}</span></h1>
+
+            <h2>Gyfter Details</h2>
+            <div>item: {{ticket.item}}</div>
+            <div>gyfter: {{ticket.gyfter}}</div>
+            <div>pickup_address: {{ticket.pickup_address}}</div>
+            <div>pickup_time: {{ticket.pickup_time}}</div>
+            <div>pickup_date: {{ticket.pickup_date}}</div>
+
+            <h2>Delivery Instructions</h2>
+            <div>deliverer: {{ticket.deliverer}}</div>
+            <div>requester: {{ticket.requester}}</div>
+            <div>dropoff_address: {{ticket.dropoff_address}}</div>
+            <div>dropoff_time: {{ticket.dropoff_time}}</div>
+            <div>dropoff_date: {{ticket.dropoff_date}}</div>
+
+            <h2>Closed Ticket Details</h2>
+            <div class="form-group">
+            <form action="/view?tid={{ ticket.tid }}&status=closed" method="POST">   
+                <span class="label label-default">closed_details</span>
+                <textarea class="form-control" type="text" name="closed_details" value={{closed_details}}></textarea>
+
+                <input class="btn btn-primary btn-xs fresh" type="submit" value="update">
+
+                <!-- cancel button -->
+                <a href="/view?tid={{ ticket.tid }}">
+                    <div class="btn btn-danger btn-xs">cancel</div>
+                </a>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
