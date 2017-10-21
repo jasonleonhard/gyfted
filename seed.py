@@ -4,14 +4,14 @@ from models import db, Ticket
 
 # full examples
 t1 = Ticket(item='13 hat assorted colors', deliverer='Bonnie', gyfter='Ashika',
-            pickup_address='smith memorial', pickup_time='11am',
+            pickup_address='smith memorial union', pickup_time='11am',
             pickup_date='11/11/17', requester='Jason',
             dropoff_address='pioneer square', dropoff_time='11pm',
             dropoff_date='11/11/17')
 
 t2 = Ticket(item='11 coats assorted colors', deliverer='Michael',
-            gyfter='Jason', pickup_address='pioneer square', pickup_time='9am',
-            pickup_date='11/12/17', requester='Ashika',
+            gyfter='Jason', pickup_address='pioneer courthouse square',
+            pickup_time='9am', pickup_date='11/12/17', requester='Ashika',
             dropoff_address='smith memorial', dropoff_time='11am',
             dropoff_date='11/12/17')
 
