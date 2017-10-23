@@ -96,7 +96,14 @@
                         <input type="submit" value="Delete" class='btn btn-danger btn-xs'>
                       </form>
                     </td>
-                    <td>{{ticket.status}}</td>
+                    {% if ticket.status == "new" %}
+                        <td><span class="label label-success">{{ ticket.status }}</span></td>
+                    {% elif ticket.status == "ready" %}
+                        <td><span class="label label-warning">{{ ticket.status }}</span></td>
+                    {% elif ticket.status == "closed" %}
+                        <td><span class="label label-default">{{ ticket.status }}</span></td>
+                    {% endif %}
+
                     <td>{{ticket.item}}</td>
                     <td>{{ticket.deliverer}}</td>
 
