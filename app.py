@@ -85,6 +85,44 @@ def newticket(item='', deliverer='',
         # return render_template('show.html', ticket=ticket)
         return redirect("view?tid=" + ticket_id)
 
+@app.route("/addticket", methods=['POST', 'GET'])
+def addticket(item='', deliverer='',
+              gyfter='', pickup_address='', pickup_time='', pickup_date='',
+              requester='', dropoff_address='', dropoff_time='',
+              dropoff_date=''):
+    """Stubbed out map and list view."""
+    if request.method == 'GET':
+        return render_template('addticket.html')  # , title=title)
+    if request.method == 'POST':
+        if request.form['formtype']=="donate":
+            print(request.form['formtype'])
+            item = request.form['item']
+            gyfter = request.form['name']
+            email = request.form['contactemail']
+            pickup_address = request.form['location']
+            pickup_time = request.form['time']
+            pickup_date = request.form['expiration']
+            if request.form['delivery']=='2' :
+                deliverer= gyfter
+
+        elif request.form['formtype']=="request": 
+            print(request.form['formtype'])
+            item = request.form['item']
+            requester = request.form['name']
+            email = request.form['contactemail']
+            dropoff_address = request.form['location']
+            dropoff_time = request.form['time']
+            dropoff_date = request.form['expiration']
+            if request.form['pickup'] == '2' :
+                deliverer= requester
+            
+    ticket = Ticket(item, deliverer, gyfter, pickup_address,
+                        pickup_time, pickup_date, requester,
+                        dropoff_address, dropoff_time, dropoff_date)
+
+    db.session.add(ticket)
+    db.session.commit()
+    return render_template('show.html', ticket=ticket) 
 
 @app.route("/show_all", methods=['GET', 'POST'])
 def show_all():
