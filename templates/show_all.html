@@ -32,8 +32,6 @@
     }
 </style>
 
-{% extends "template.html" %}
-{% block content %}
 <div class="container">
     <table id="example" class="table table-hover table-bordered table-condensed">
         <thead>
@@ -113,4 +111,6 @@
         $('#example').DataTable();
     } );
 </script>
+{% extends "template.html" %}
+{% block content %}
 {% endblock %}

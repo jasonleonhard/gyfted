@@ -1,9 +1,17 @@
 """Main gyfted logic and point that is used to start the app."""
 from flask import render_template, request, session, redirect
-from models import app, db, Ticket
+from models import app, db, Ticket, Place
 import geocoder
 import geopy.distance
 from geojson import Point
+from forms import AddressForm
+
+
+@app.route('/point_2_geojson', methods=['GET', 'POST'])
+def point_2_geojson():
+    """Return a string of the Point from geojson. Must be string returned."""
+    return str(Point((-122.67752, 45.51862))["coordinates"])
+    # >> [-122.67752, 45.51862]
 
 
 @app.route('/map2/<int:tid>', methods=['GET', 'POST'])
@@ -47,11 +55,42 @@ def map2(tid):
                            dropoff_geoj=dropoff_geoj, dist=dist)
 
 
-@app.route('/point_2_geojson', methods=['GET', 'POST'])
-def point_2_geojson():
-    """Return a string of the Point from geojson. Must be string returned."""
-    return str(Point((-122.67752, 45.51862))["coordinates"])
-    # >> [-122.67752, 45.51862]
+@app.route("/nearby/<int:tid>", methods=["GET", "POST"])
+def nearby(tid):
+    """Nearby uses flask_wtform and wikipedia apis.
+
+    Get the address, query for places around it
+    (currently wikipedia, may become locations of tickets),
+    return results.
+    """
+    tid = tid
+    ticket = Ticket.query.get(tid)
+    pickup_address = ticket.pickup_address
+    pickup_ll = geocoder.google(pickup_address)
+    p_lat, p_lng = pickup_ll.lat, pickup_ll.lng
+    form = AddressForm()
+    places = []
+    my_coordinates = (p_lat, p_lng)
+    lat_lng = (p_lat, p_lng)
+
+    if request.method == 'POST':
+        if form.validate() is False:
+            return render_template('nearby.html', form=form, tid=tid,
+                                   ticket=ticket)
+        else:
+            address = form.address.data
+            p = Place()
+            my_coordinates = p.address_to_latlng(address)
+            places = p.main(address)
+
+            return render_template('nearby.html', form=form, places=places,
+                                   my_coordinates=my_coordinates, tid=tid,
+                                   lat_lng=lat_lng, ticket=ticket)
+
+    elif request.method == 'GET':
+        return render_template("nearby.html", form=form, places=places,
+                               my_coordinates=my_coordinates, tid=tid,
+                               lat_lng=lat_lng, ticket=ticket)
 
 
 @app.route("/")
