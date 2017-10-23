@@ -43,10 +43,10 @@ class Ticket(db.Model):
     hidden = db.Column(db.Boolean)
     status = db.Column(db.String(100))
 
-    def __init__(self, item, deliverer, gyfter, pickup_address, pickup_time,
-                 pickup_date, requester, dropoff_address, dropoff_time,
-                 dropoff_date):
-        """Initialize each field. Sections include: by, from, to, other"""
+    def __init__(self, item, deliverer, gyfter, pickup_address,
+                 pickup_time, pickup_date, requester,
+                 dropoff_address, dropoff_time, dropoff_date):
+        """Initialize fields. Ticket lifecycle: requester, deliverer, gyfter"""
         self.item = item
         self.deliverer = deliverer
 
