@@ -199,15 +199,14 @@
                 <input class="form-control" type="time" id="dropoff_time" name="dropoff_time" readonly value={{ticket.dropoff_time}}>
             </div>
         </div>
-
     </div>
 
     <div class="col-md-6">
         <h2>Closed Ticket Details</h2>
         <div class="form-group row">
-            <label for="closed_details" class="col-sm-3 col-form-label">Details</label>
+            <label for="closed_details" class="col-sm-3 col-form-label">Details *</label>
             <div class="col-sm-9">
-                <textarea class="form-control" type="text" id="closed_details" name="closed_details" readonly value={{ticket.closed_details}}></textarea>
+                <textarea class="form-control" type="text" id="closed_details" name="closed_details" readonly value={{ticket.closed_details}}>{{ticket.closed_details}}</textarea>
             </div>
         </div>
     </div>
