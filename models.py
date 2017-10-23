@@ -6,10 +6,11 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "development-key"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/gyfted_dev' 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # True
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.debug = True
+
 
 db = SQLAlchemy(app)
 db.init_app(app)
