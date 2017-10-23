@@ -3,6 +3,7 @@ from flask import render_template, request, session, redirect
 from models import app, db, Ticket
 import geocoder
 import geopy.distance
+from geojson import Point
 
 
 @app.route('/map2/<int:tid>', methods=['GET', 'POST'])
@@ -44,6 +45,13 @@ def map2(tid):
                            d_lat=d_lat, d_lng=d_lng,
                            pickup_geoj=pickup_geoj,
                            dropoff_geoj=dropoff_geoj, dist=dist)
+
+
+@app.route('/point_2_geojson', methods=['GET', 'POST'])
+def point_2_geojson():
+    """Return a string of the Point from geojson. Must be string returned."""
+    return str(Point((-122.67752, 45.51862))["coordinates"])
+    # >> [-122.67752, 45.51862]
 
 
 @app.route("/")
