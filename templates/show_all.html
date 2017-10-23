@@ -37,6 +37,7 @@
         <thead>
             <tr class='theme_colors'>
                 <th>id</th>
+                <th>status</th>
 
                 <th>item</th>
                 <th>deliverer</th>
@@ -50,11 +51,13 @@
                 <th>dropoff address</th>
                 <th>dropoff time</th>
                 <th>dropoff date</th>
+                <th>details</th>
             </tr>
         </thead>
         <tfoot>
             <tr class='theme_colors'>
                 <th>id</th>
+                <th>status</th>
 
                 <th>item</th>
                 <th>deliverer</th>
@@ -68,6 +71,7 @@
                 <th>dropoff address</th>
                 <th>dropoff time</th>
                 <th>dropoff date</th>
+                <th>details</th>
               </tr>
         </tfoot>
         <tbody>
@@ -79,6 +83,7 @@
                           {{ticket.tid}}
                       </div>
                       <form action="/map2/{{ticket.tid}}" method="POST" class='nmb'>
+                      <!-- <form action="/view?tid={{ticket.tid}}" method="POST" class='nmb'> -->
                         <input type="hidden" name="tid" value="{{ticket.tid}}">
                         <input type="submit" value="show" class='btn btn-primary btn-xs'>
                       </form>
@@ -87,6 +92,14 @@
                         <input type="submit" value="Delete" class='btn btn-danger btn-xs'>
                       </form>
                     </td>
+                    {% if ticket.status == "new" %}
+                        <td><span class="label label-success">{{ ticket.status }}</span></td>
+                    {% elif ticket.status == "ready" %}
+                        <td><span class="label label-warning">{{ ticket.status }}</span></td>
+                    {% elif ticket.status == "closed" %}
+                        <td><span class="label label-default">{{ ticket.status }}</span></td>
+                    {% endif %}
+
                     <td>{{ticket.item}}</td>
                     <td>{{ticket.deliverer}}</td>
 
@@ -99,6 +112,7 @@
                     <td>{{ticket.dropoff_address}}</td>
                     <td>{{ticket.dropoff_time}}</td>
                     <td>{{ticket.dropoff_date}}</td>
+                    <td>{{ticket.closed_details}}</td>
                  </tr>
               {% endfor %}
           {% endif %}
