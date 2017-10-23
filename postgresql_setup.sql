@@ -17,9 +17,5 @@ CREATE DATABASE gyfted_dev;
 -- python3 db_create.py
 
 
--- finally run
--- psql -a -f postgresql_view.sql
-
-
 -- or use
 -- make recreatedb
