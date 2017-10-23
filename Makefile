@@ -4,14 +4,16 @@ setup:
 		pipenv shell
 		pipenv install -r requirements.txt
 
-		# autoenv # auto run virtual env
+
+autovirtualenv:
+		echo "if you have autoenv installed and the source line below in your dot files"
+		echo "your virtual environment will start automagically when you cd into your dir"
 		pipenv install autoenv
-		source /usr/local/bin/activate.sh
-		ENV | grep -i DATABASE_URL
+		echo "source /usr/local/bin/activate.sh" >> ~/.bash_profile
+		echo "source /usr/local/bin/activate.sh" >> ~/.zshrc
 
 virtual:
-		echo "cd into your project directory \
-		autoenv will start your virtual env"
+		echo "cd into your project directory autoenv will start your virtual env using .env"
 		pipenv shell
 
 checkenv:
@@ -19,7 +21,7 @@ checkenv:
 
 run:
 		echo "refresh your browser"
-		open http://localhost:5000
+		open http://localhost:5000/show_all
 		pipenv run python3 app.py
 
 help:
@@ -37,6 +39,6 @@ createdb:
 		python3 seed.py
 
 all:
+		echo "first start your virtual env"
 		make createdb
-		make virtual
 		make run
