@@ -4,22 +4,22 @@ from models import db, Ticket
 
 # full examples
 t1 = Ticket(item='13 hat assorted colors', deliverer='Bonnie', gyfter='Ashika',
-            pickup_address='smith memorial', pickup_time='11am',
+            pickup_address='smith memorial union', pickup_time='11am',
             pickup_date='11/11/17', requester='Jason',
-            dropoff_address='pioneer square', dropoff_time='11pm',
+            dropoff_address='pioneer courthouse square', dropoff_time='11pm',
             dropoff_date='11/11/17')
 
 t2 = Ticket(item='11 coats assorted colors', deliverer='Michael',
-            gyfter='Jason', pickup_address='pioneer square', pickup_time='9am',
-            pickup_date='11/12/17', requester='Ashika',
-            dropoff_address='smith memorial', dropoff_time='11am',
+            gyfter='Jason', pickup_address='pioneer courthouse square',
+            pickup_time='9am', pickup_date='11/12/17', requester='Ashika',
+            dropoff_address='smith memorial union', dropoff_time='11am',
             dropoff_date='11/12/17')
 
 t3 = Ticket(item='3 pairs size 11 womens shoes', deliverer='Jason',
             gyfter='Michael',
             pickup_address='US Bank Tower, Southwest 4th Avenue, Portland, OR',
             pickup_time='11am', pickup_date='11/11/17', requester='Jason',
-            dropoff_address='pioneer square', dropoff_time='11pm',
+            dropoff_address='pioneer courthouse square', dropoff_time='11pm',
             dropoff_date='11/11/17')
 
 t4 = Ticket(item='a partridge in a pear tree', deliverer='Ashika',

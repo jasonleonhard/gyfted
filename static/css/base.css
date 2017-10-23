@@ -1,9 +1,13 @@
 body {
-    padding-top: 70px; // for bootstrap fixed-navbar
+    padding-top: 60px; // for bootstrap fixed-navbar
 }
-label{
+label {
     display: inline-block;
 
+}
+tr {
+    background: rgba(140, 0, 193, 1) !important;
+    color: #ffffff;
 }
 .pink {
    color: hotpink !important;
@@ -38,6 +42,9 @@ label{
     background: #ffffff;
     color: rgba(140, 0, 193, 1);
 }
+.navbar {
+  margin-bottom: 20px;
+}
 
 td {
     background: rgba(140, 0, 193, 1);
@@ -59,4 +66,11 @@ td:hover {
 
 #formTitle{
     text-align: center;
+}
+
+.fl {
+    float: right;
+}
+.fr {
+    float: right;
 }

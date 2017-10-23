@@ -20,23 +20,18 @@
         background: rgba(140, 0, 193, 1) !important;
         color: #ffffff !important;
     }
-
     th.sorting_asc::after {
         opacity: 0.9;
     }
-
     .paginate_button {
         color: rgba(0, 0, 0, 0) !important;
         background: rgba(0, 0, 0, 0) !important;
     }
-
     .float-right {
         float: right;
     }
 </style>
 
-{% extends "template.html" %}
-{% block content %}
 <div class="container">
     <table id="example" class="table table-hover table-bordered table-condensed">
         <thead>
@@ -83,7 +78,7 @@
                       <div class="float-right">
                           {{ticket.tid}}
                       </div>
-                      <form action="/show_ticket?tid={{ticket.tid}}" method="POST" class='nmb'>
+                      <form action="/map2/{{ticket.tid}}" method="POST" class='nmb'>
                         <input type="hidden" name="tid" value="{{ticket.tid}}">
                         <input type="submit" value="show" class='btn btn-primary btn-xs'>
                       </form>
@@ -116,4 +111,6 @@
         $('#example').DataTable();
     } );
 </script>
+{% extends "template.html" %}
+{% block content %}
 {% endblock %}
