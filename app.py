@@ -1,6 +1,49 @@
-"""."""
+"""Main gyfted logic and point that is used to start the app."""
 from flask import render_template, request, session, redirect
 from models import app, db, Ticket
+import geocoder
+import geopy.distance
+
+
+@app.route('/map2/<int:tid>', methods=['GET', 'POST'])
+def map2(tid):
+    """Map, list and sentence view for tickets using tid.
+
+    Get ticket id from url, use that to find the ticket
+    convert ticket addresses to geolocation and show them
+    and finally provide distance calulations.
+    """
+    tid = tid
+    ticket = Ticket.query.get(tid)
+    pickup_address = ticket.pickup_address
+    dropoff_address = ticket.dropoff_address
+
+    pickup_ll = geocoder.google(pickup_address)
+    dropoff_ll = geocoder.google(dropoff_address)
+
+    pickup_geoj = pickup_ll.geojson
+    dropoff_geoj = dropoff_ll.geojson
+
+    # complete address
+    pickup_address = pickup_geoj['properties']['address']
+    dropoff_address = dropoff_geoj['properties']['address']
+
+    p_lat, p_lng = pickup_ll.lat, pickup_ll.lng
+    d_lat, d_lng = dropoff_ll.lat, dropoff_ll.lng
+
+    coords_1 = (p_lat, p_lng)
+    coords_2 = (d_lat, d_lng)
+
+    dist = geopy.distance.vincenty(coords_1, coords_2).mi
+    dist = round(dist, 2)
+    dist = str(dist) + ' mi'
+
+    return render_template('map2.html',
+                           ticket=ticket,
+                           p_lat=p_lat, p_lng=p_lng,
+                           d_lat=d_lat, d_lng=d_lng,
+                           pickup_geoj=pickup_geoj,
+                           dropoff_geoj=dropoff_geoj, dist=dist)
 
 
 @app.route("/")
@@ -102,8 +145,7 @@ def delete_ticket():
 # disable browser caching
 @app.after_request
 def add_header(response):
-    """
-    Add headers to both force latest IE rendering engine or Chrome Frame.
+    """Add headers to both force latest IE rendering engine or Chrome Frame.
 
     Also to cache the rendered page for 10 minutes.
     """
