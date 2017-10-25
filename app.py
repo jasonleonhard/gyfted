@@ -315,6 +315,20 @@ def all_requests():
                                title="Requests", search_term=search_term)
 
 
+@app.route("/all_offers")
+def all_offers():
+    """Dynamic list view with stubbed out map and list view."""
+    if request.method == 'GET':
+        all_tickets = Ticket.query.all()
+        return render_template('all_offers.html', all_tickets=all_tickets,
+                               title="Offerings")
+    if request.method == 'POST':
+        # get query param and return...
+        search_term = request.args.get('search_term')
+        return render_template('all_offers.html', all_tickets=all_tickets,
+                               title="Offerings", search_term=search_term)
+
+
 @app.route('/clients/')
 @app.route('/clients')
 def clients():
