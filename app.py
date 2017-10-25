@@ -1,10 +1,164 @@
 """Main gyfted logic and point that is used to start the app."""
-from flask import render_template, request, session, redirect
+from flask import render_template, request, redirect
 from models import app, db, Ticket, Place
 import geocoder
 import geopy.distance
 from geojson import Point
 from forms import AddressForm
+
+
+@app.route("/newrequest", methods=['POST', 'GET'])
+def newrequest():
+    """Create and show only request fields."""
+    if request.method == 'GET':
+        return render_template('new_request.html', title="New Ticket")
+    if request.method == 'POST':
+        item = request.form['item']
+        deliverer = ''
+
+        requester = request.form['requester']
+        dropoff_address = request.form['dropoff_address']
+        dropoff_time = request.form['dropoff_time']
+        dropoff_date = request.form['dropoff_date']
+
+        gyfter = ''
+        pickup_address = ''
+        pickup_time = ''
+        pickup_date = ''
+
+        ticket = Ticket(item, deliverer, gyfter, pickup_address,
+                        pickup_time, pickup_date, requester,
+                        dropoff_address, dropoff_time, dropoff_date)
+
+        db.session.add(ticket)
+        db.session.commit()
+        return render_template('show_request.html', ticket=ticket)
+
+
+@app.route("/newoffer", methods=['POST', 'GET'])
+def newoffer():
+    """Create and show only offer fields."""
+    if request.method == 'GET':
+        return render_template('new_offer.html', title="New Ticket")
+    if request.method == 'POST':
+        item = request.form['item']
+        deliverer = ''
+
+        gyfter = request.form['gyfter']
+        pickup_address = request.form['pickup_address']
+        pickup_time = request.form['pickup_time']
+        pickup_date = request.form['pickup_date']
+
+        requester = ''
+        dropoff_address = ''
+        dropoff_time = ''
+        dropoff_date = ''
+
+        ticket = Ticket(item, deliverer, gyfter, pickup_address,
+                        pickup_time, pickup_date, requester,
+                        dropoff_address, dropoff_time, dropoff_date)
+        db.session.add(ticket)
+        db.session.commit()
+        return render_template('show_offer.html', ticket=ticket)
+
+
+@app.route("/newticket", methods=['POST', 'GET'])
+def newticket(item='', deliverer='',
+              gyfter='', pickup_address='', pickup_time='', pickup_date='',
+              requester='', dropoff_address='', dropoff_time='',
+              dropoff_date=''):
+    """Render ticket form."""
+    if request.method == 'GET':
+        return render_template('new_ticket.html', title="New Ticket")
+    if request.method == 'POST':
+        # alternative store form fields in varibles & create new ticket object
+        item = request.form['item']
+        deliverer = request.form['deliverer']
+
+        gyfter = request.form['gyfter']
+        pickup_address = request.form['pickup_address']
+        pickup_time = request.form['pickup_time']
+        pickup_date = request.form['pickup_date']
+
+        requester = request.form['requester']
+        dropoff_address = request.form['dropoff_address']
+        dropoff_time = request.form['dropoff_time']
+        dropoff_date = request.form['dropoff_date']
+
+        ticket = Ticket(item, deliverer, gyfter, pickup_address,
+                        pickup_time, pickup_date, requester,
+                        dropoff_address, dropoff_time, dropoff_date)
+
+        db.session.add(ticket)
+        db.session.commit()
+
+        # map2 show
+        pickup_ll = geocoder.google(pickup_address)
+        dropoff_ll = geocoder.google(dropoff_address)
+
+        pickup_geoj = pickup_ll.geojson
+        dropoff_geoj = dropoff_ll.geojson
+
+        # complete address
+        pickup_address = pickup_geoj['properties']['address']
+        dropoff_address = dropoff_geoj['properties']['address']
+
+        p_lat, p_lng = pickup_ll.lat, pickup_ll.lng
+        d_lat, d_lng = dropoff_ll.lat, dropoff_ll.lng
+
+        coords_1 = (p_lat, p_lng)
+        coords_2 = (d_lat, d_lng)
+
+        dist = geopy.distance.vincenty(coords_1, coords_2).mi
+        dist = round(dist, 2)
+        dist = str(dist) + ' mi'
+
+        return render_template('map2.html',
+                               ticket=ticket,
+                               p_lat=p_lat, p_lng=p_lng,
+                               d_lat=d_lat, d_lng=d_lng,
+                               pickup_geoj=pickup_geoj,
+                               dropoff_geoj=dropoff_geoj, dist=dist)
+
+
+@app.route("/addticket", methods=['POST', 'GET'])
+def addticket(item='', deliverer='',
+              gyfter='', pickup_address='', pickup_time='', pickup_date='',
+              requester='', dropoff_address='', dropoff_time='',
+              dropoff_date=''):
+    """Stubbed out map and list view."""
+    if request.method == 'GET':
+        return render_template('add_ticket.html')  # , title=title)
+    if request.method == 'POST':
+        if request.form['formtype'] == "donate":
+            print(request.form['formtype'])
+            item = request.form['item']
+            gyfter = request.form['name']
+            # email = request.form['contactemail']
+            pickup_address = request.form['location']
+            pickup_time = request.form['time']
+            pickup_date = request.form['expiration']
+            if request.form['delivery'] == '2':
+                deliverer = gyfter
+
+        elif request.form['formtype'] == "request":
+            print(request.form['formtype'])
+            item = request.form['item']
+            requester = request.form['name']
+            # email = request.form['contactemail']
+            dropoff_address = request.form['location']
+            dropoff_time = request.form['time']
+            dropoff_date = request.form['expiration']
+            if request.form['pickup'] == '2':
+                deliverer = requester
+
+    ticket = Ticket(item, deliverer, gyfter, pickup_address,
+                    pickup_time, pickup_date, requester,
+                    dropoff_address, dropoff_time, dropoff_date)
+
+    db.session.add(ticket)
+    db.session.commit()
+    return render_template('show.html', ticket=ticket)
 
 
 @app.route('/point_2_geojson', methods=['GET', 'POST'])
@@ -105,130 +259,96 @@ def about():
     return render_template("about.html", title="About")
 
 
+# @app.route("/map")
+# def map():
+#     """Stubbed out map and list view."""
+#     return render_template("map.html", title="Offerings")
+
+
 @app.route("/map")
 def map():
-    """Stubbed out map and list view."""
-    return render_template("map.html", title="Offerings")
-
-
-@app.route('/ticket/')
-@app.route('/ticket/<item>')
-def ticket(item=None):
-    """."""
-    return render_template('ticket.html', item=item)
-
-
-@app.route("/newticket", methods=['POST', 'GET'])
-def newticket(item='', deliverer='',
-              gyfter='', pickup_address='', pickup_time='', pickup_date='',
-              requester='', dropoff_address='', dropoff_time='',
-              dropoff_date=''):
-    """render ticket form."""
+    """Dynamic list view with stubbed out map and list view."""
     if request.method == 'GET':
-        return render_template('newticket.html', title="New Ticket")  # , title=title)
+        all_tickets = Ticket.query.all()
+        return render_template('map.html', all_tickets=all_tickets,
+                               title="Offerings")
     if request.method == 'POST':
-        # Clear sessions then store form fields in session object by name
-        session.clear()
-        session['item'] = request.form['item']
-        session['deliverer'] = request.form['deliverer']
+        all_tickets = Ticket.query.all()
+        # ticket = Ticket.query.get(ticket_id)
+        return render_template('map.html', all_tickets=all_tickets,
+                               title="Offerings")
 
-        session['gyfter'] = request.form['gyfter']
-        session['pickup_address'] = request.form['pickup_address']
-        session['pickup_time'] = request.form['pickup_time']
-        session['pickup_date'] = request.form['pickup_date']
 
-        session['requester'] = request.form['requester']
-        session['dropoff_address'] = request.form['dropoff_address']
-        session['dropoff_time'] = request.form['dropoff_time']
-        session['dropoff_date'] = request.form['dropoff_date']
-
-        # alternative store form fields in varibles & create new ticket object
-        item = request.form['item']
-        deliverer = request.form['deliverer']
-
-        gyfter = request.form['gyfter']
-        pickup_address = request.form['pickup_address']
-        pickup_time = request.form['pickup_time']
-        pickup_date = request.form['pickup_date']
-
-        requester = request.form['requester']
-        dropoff_address = request.form['dropoff_address']
-        dropoff_time = request.form['dropoff_time']
-        dropoff_date = request.form['dropoff_date']
-
-        ticket = Ticket(item, deliverer, gyfter, pickup_address,
-                        pickup_time, pickup_date, requester,
-                        dropoff_address, dropoff_time, dropoff_date)
-
-        db.session.add(ticket)
-        db.session.commit()
-        
-
-@app.route("/addticket", methods=['POST', 'GET'])
-def addticket(item='', deliverer='',
-              gyfter='', pickup_address='', pickup_time='', pickup_date='',
-              requester='', dropoff_address='', dropoff_time='',
-              dropoff_date=''):
-    """Stubbed out map and list view."""
+@app.route("/all_requests", methods=['GET', 'POST'])
+def all_requests():
+    """Dynamic list view with stubbed out map and list view."""
     if request.method == 'GET':
-        return render_template('addticket.html')  # , title=title)
+        search_term = request.args.get('search_term')
+
+        all_tickets = Ticket.query.all()
+        if search_term:
+            # hard coded works if exact string
+            # filtered_tickets = Ticket.query
+            # .filter_by(item="11 coats assorted colors").all()
+
+            # general # must be exact string
+            filtered_tickets = Ticket.query.filter_by(item=search_term).all()
+
+            # TODO: impliment fuzzy search
+            return render_template('all_requests.html',
+                                   all_tickets=all_tickets,
+                                   title="Requests",
+                                   search_term=search_term,
+                                   filtered_tickets=filtered_tickets)
+        else:
+            all_tickets = Ticket.query.all()
+            return render_template('all_requests.html',
+                                   all_tickets=all_tickets,
+                                   title="Requests")
+
     if request.method == 'POST':
-        if request.form['formtype']=="donate":
-            print(request.form['formtype'])
-            item = request.form['item']
-            gyfter = request.form['name']
-            email = request.form['contactemail']
-            pickup_address = request.form['location']
-            pickup_time = request.form['time']
-            pickup_date = request.form['expiration']
-            if request.form['delivery']=='2' :
-                deliverer= gyfter
+        all_tickets = Ticket.query.all()
+        # get query param and return...
+        search_term = request.args.get('search_term')
+        # return search_term
+        return render_template('all_requests.html', all_tickets=all_tickets,
+                               title="Requests", search_term=search_term)
 
-        elif request.form['formtype']=="request": 
-            print(request.form['formtype'])
-            item = request.form['item']
-            requester = request.form['name']
-            email = request.form['contactemail']
-            dropoff_address = request.form['location']
-            dropoff_time = request.form['time']
-            dropoff_date = request.form['expiration']
-            if request.form['pickup'] == '2' :
-                deliverer= requester
-            
-    ticket = Ticket(item, deliverer, gyfter, pickup_address,
-                        pickup_time, pickup_date, requester,
-                        dropoff_address, dropoff_time, dropoff_date)
 
-    db.session.add(ticket)
-    db.session.commit()
-    return render_template('show.html', ticket=ticket) 
+@app.route('/clients/')
+@app.route('/clients')
+def clients():
+    """Client who use the Gyfted Platform."""
+    return render_template('clients.html')
 
 
 @app.route("/show_all", methods=['GET', 'POST'])
 def show_all():
     """Stubbed out show and list users view."""
-
     all_tickets = Ticket.query.all()
-    return render_template('show_all.html', all_tickets=all_tickets, title="Tickets")
+    return render_template('show_all.html', all_tickets=all_tickets,
+                           title="Tickets")
 
 
 @app.route("/view", methods=['GET', 'POST'])
 def status():
     """Stubbed out show and list users view."""
-
     ticket_id = request.args.get('tid')
     ticket_status = request.args.get('status')
     ticket_action = request.args.get('action')
-    print("id: ", ticket_id, "status: ", ticket_status, "action: ", ticket_action)
+    print("id: ", ticket_id, "status: ", ticket_status, "action: ",
+          ticket_action)
     ticket = Ticket.query.get(ticket_id)
 
     # view ticket
     if ticket_id and not(ticket_status):
-        return render_template("showticket.html", title="View Ticket", ticket=ticket)
+        return render_template("show_ticket.html", title="View Ticket",
+                               ticket=ticket)
 
     # display add delivery instructions form
     if ticket_status == "new" and ticket_action:
-        return render_template("status_ready.html", title="Edit Ticket", ticket=ticket)
+        return render_template("status_ready.html", title="Edit Ticket",
+                               ticket=ticket)
 
     # change status from new to ready
     if ticket_status == "ready" and not(ticket_action):
@@ -252,7 +372,8 @@ def status():
 
     # display add delivery instructions form
     if ticket_status == "ready" and ticket_action:
-        return render_template("status_closed.html", title="Edit Ticket", ticket=ticket)
+        return render_template("status_closed.html", title="Edit Ticket",
+                               ticket=ticket)
 
     # change status from in-progress to closed
     if ticket_status == "closed":

@@ -1,0 +1,34 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container">
+     <h1>Gyfted</h1>
+    <p class="lead">Help those in need and declutter your life.<br>
+    Repurposed goods. Not a landfill or your closet.</p>
+    <form action="/newrequest" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <span class="label label-default">Item</span>
+                <input class="form-control" type="text" name="item" value={{item}}>
+            </div>
+        </div>
+        <div class="pad"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <span class="label label-default">Requester</span>
+                <input class="form-control" type="text" name="requester" value={{requester}}>
+
+                <span class="label label-default">Dropoff Address</span>
+                <input class="form-control" type="text" name="dropoff_address" value={{dropoff_address}}>
+
+                <span class="label label-default">Dropoff Time</span>
+                <input class="form-control" type="text" name="dropoff_time" value={{dropoff_time}}>
+
+                <span class="label label-default">Dropoff Date</span>
+                <input class="form-control" type="text" name="dropoff_date" value={{dropoff_date}}>
+            </div>
+        </div>
+        <div class="pad"></div>
+        <input class="btn btn-primary btn-xs fresh" type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

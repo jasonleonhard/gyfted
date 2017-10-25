@@ -9,16 +9,20 @@ tr {
     background: rgba(140, 0, 193, 1) !important;
     color: #ffffff;
 }
+ul {
+    list-style: none;
+    padding-left: 0;
+}
 .pink {
    color: hotpink !important;
    font-weight: bold;
 }
 
-.theme_colors{
+.theme_colors {
     background: rgba(140, 0, 193, 1);
     color: #ffffff;
 }
-.theme_colors_inverted{
+.theme_colors_inverted {
     background: #ffffff;
     color: rgba(140, 0, 193, 1);
 }
@@ -64,7 +68,7 @@ td:hover {
     padding-bottom: 0.1px;
 }
 
-#formTitle{
+#formTitle {
     text-align: center;
 }
 

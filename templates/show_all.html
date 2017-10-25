@@ -80,10 +80,9 @@
                  <tr class='theme_colors'>
                     <td>
                       <div class="float-right">
-                          {{ticket.tid}}
+                        <span class="label label-default">{{ticket.tid}}</span>
                       </div>
                       <form action="/map2/{{ticket.tid}}" method="POST" class='nmb'>
-                      <!-- <form action="/view?tid={{ticket.tid}}" method="POST" class='nmb'> -->
                         <input type="hidden" name="tid" value="{{ticket.tid}}">
                         <input type="submit" value="show" class='btn btn-primary btn-xs'>
                       </form>

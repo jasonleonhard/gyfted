@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container">
+    {% if ticket %}
+        <br>
+        <div class="col-md-2">
+            <ul>
+                <li><span class="label label-default">Item: {{ticket.item}}</span></li>
+                <li><span class="label label-default">Gyfter: {{ticket.gyfter}}</span></li>
+                <li><span class="label label-default">Pickup Address: {{ticket.pickup_address}}</span></li>
+                <li><span class="label label-default">Dropoff Time: {{ticket.dropoff_time}}</span></li>
+                <li><span class="label label-default">Dropoff Date: {{ticket.dropoff_date}}</span></li>
+            </ul>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

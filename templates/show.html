@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container">
+    {% if ticket %}
+        <br>
+        <div class="col-md-2">
+            <span class="label label-default">ticket</span>
+            {% if tid %}
+               <div>{{ticket}}</div>
+               <div>{{tid}}</div>
+            {% endif %}
+            <div>item: {{ticket.item}}</div>
+            <div>deliverer: {{ticket.deliverer}}</div>
+
+            <div>gyfter: {{ticket.gyfter}}</div>
+            <div>pickup_address: {{ticket.pickup_address}}</div>
+            <div>pickup_time: {{ticket.pickup_time}}</div>
+            <div>pickup_date: {{ticket.pickup_date}}</div>
+
+            <div>requester: {{ticket.requester}}</div>
+            <div>dropoff_address: {{ticket.dropoff_address}}</div>
+            <div>dropoff_time: {{ticket.dropoff_time}}</div>
+            <div>dropoff_date: {{ticket.dropoff_date}}</div>
+        </div>
+    {% endif %}
+    {% if session %}
+        <div class="col-md-2">
+            <span class="label label-default">sessions._____</span>
+            {% for i in session %}
+                <div class=''>
+                    {{i}}:
+                    {{session[i]}}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
