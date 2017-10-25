@@ -3,7 +3,7 @@
 from models import db, Ticket
 
 # full examples
-t1 = Ticket(item='13 hat assorted colors', deliverer='Bonnie', gyfter='Ashika',
+t1 = Ticket(item='13 hats assorted colors', deliverer='Bonnie', gyfter='Ashika',
             pickup_address='smith memorial union', pickup_time='11am',
             pickup_date='11/11/17', requester='Jason',
             dropoff_address='pioneer courthouse square', dropoff_time='11pm',

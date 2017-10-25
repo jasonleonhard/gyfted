@@ -3,6 +3,19 @@
 
 ![Alt text](/static/images/G.jpg?raw=true "Gyfted")
 
+### Setup
+1. Mkdir Gyfted
+2. CD into Gyfted
+3. git init
+4. git remote add origin https://github.com/jasonleonhard/gyfted.git
+5.git pull origin master
+6. source activate flask-env
+7. Download Postgres 10, installed with default options
+http://postgresapp.com/
+8. source activate flask-env
+9. pip install -r requirements.txt
+10. first run export DATABASE_URL=“postgresql://localhost/gyfted_dev”, afterwards DATABASE_URL=“postgresql://localhost/gyfted_dev”
+
 ### Brief
 We connect people needing items
 
