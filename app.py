@@ -125,10 +125,10 @@ def newticket(item='', deliverer='',
 def addticket(item='', deliverer='',
               gyfter='', pickup_address='', pickup_time='', pickup_date='',
               requester='', dropoff_address='', dropoff_time='',
-              dropoff_date=''):
+              dropoff_date='',comments='',ticket_type = ''):
     """Stubbed out map and list view."""
     if request.method == 'GET':
-        return render_template('add_ticket.html')  # , title=title)
+        return render_template('addticket.html')  # , title=title)
     if request.method == 'POST':
         if request.form['formtype'] == "donate":
             print(request.form['formtype'])
@@ -138,6 +138,8 @@ def addticket(item='', deliverer='',
             pickup_address = request.form['location']
             pickup_time = request.form['time']
             pickup_date = request.form['expiration']
+            comments = request.form['comments']
+            ticket_type = request.form['formtype']
             if request.form['delivery'] == '2':
                 deliverer = gyfter
 
@@ -149,12 +151,14 @@ def addticket(item='', deliverer='',
             dropoff_address = request.form['location']
             dropoff_time = request.form['time']
             dropoff_date = request.form['expiration']
+            comments = request.form['comments']
+            ticket_type = request.form['formtype']
             if request.form['pickup'] == '2':
                 deliverer = requester
 
     ticket = Ticket(item, deliverer, gyfter, pickup_address,
                     pickup_time, pickup_date, requester,
-                    dropoff_address, dropoff_time, dropoff_date)
+                    dropoff_address, dropoff_time, dropoff_date, comments, ticket_type)
 
     db.session.add(ticket)
     db.session.commit()
