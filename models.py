@@ -43,14 +43,16 @@ class Ticket(db.Model):
     dropoff_address = db.Column(db.String(100))
     dropoff_time = db.Column(db.String(100))
     dropoff_date = db.Column(db.String(100))
-
+    
+    comments = db.Column(db.String(300))
+    ticket_type = db.Column(db.String(50))
     created = db.Column(db.DateTime)
     hidden = db.Column(db.Boolean)
     status = db.Column(db.String(100))
 
     def __init__(self, item, deliverer, gyfter, pickup_address,
                  pickup_time, pickup_date, requester,
-                 dropoff_address, dropoff_time, dropoff_date):
+                 dropoff_address, dropoff_time, dropoff_date,comments, ticket_type):
         """Ticket lifecycle: requester, deliverer, gyfter."""
         self.item = item
         self.deliverer = deliverer
@@ -65,13 +67,15 @@ class Ticket(db.Model):
         self.dropoff_time = dropoff_time
         self.dropoff_date = dropoff_date
 
+        self.comments = comments
+        self.ticket_type = ticket_type
         self.created = datetime.utcnow()
         self.hidden = False
         self.status = 'ready'
 
     def __repr__(self):
         """String represenation of User showing only username and id."""
-        return '<Ticket %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s> ' % (self.tid, self.item, self.deliverer, self.gyfter, self.pickup_address, self.pickup_time, self.pickup_date, self.requester, self.dropoff_address, self.dropoff_time, self.dropoff_date, self.created, self.hidden, self.status)
+        return '<Ticket %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s> ' % (self.tid, self.item, self.deliverer, self.gyfter, self.pickup_address, self.pickup_time, self.pickup_date, self.requester, self.dropoff_address, self.dropoff_time, self.dropoff_date, self.created, self.hidden, self.status, self.comments, self.ticket_type)
 
 
 class Place(object):
